@@ -42,7 +42,7 @@ class JsonResponse(Response):
 app.response_class = JsonResponse
 
 api_list = [
-    {"url": "/get", "params": "type: ''https'|''", "desc": "get a proxy"},
+    {"url": "/get", "params": "type: 'https'|''", "desc": "get a proxy"},
     {"url": "/pop", "params": "", "desc": "get and delete a proxy"},
     {"url": "/delete", "params": "proxy: 'e.g. 127.0.0.1:8080'", "desc": "delete an unable proxy"},
     {"url": "/all", "params": "type: ''https'|''", "desc": "get all proxy from proxy pool"},
@@ -83,7 +83,7 @@ def getAll():
     return jsonify([_.to_dict for _ in proxies])
 
 
-@app.route('/delete/', methods=['GET'])
+@app.route('/delete/')
 def delete():
     proxy = request.args.get('proxy')
     status = proxy_handler.delete(Proxy(proxy))

@@ -77,9 +77,7 @@ class DbClient(withMetaclass(Singleton)):
             __type = "ssdbClient"
         elif "REDIS" == self.db_type:
             __type = "redisClient"
-        else:
-            pass
-        assert __type, 'type error, Not support DB type: {}'.format(self.db_type)
+        assert __type, f'type error, Not support DB type: {self.db_type}'
         self.client = getattr(__import__(__type), "%sClient" % self.db_type.title())(host=self.db_host,
                                                                                      port=self.db_port,
                                                                                      username=self.db_user,

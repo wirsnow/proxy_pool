@@ -76,7 +76,7 @@ class Fetcher(object):
             thread_list.append(_ThreadFetcher(fetch_source, proxy_dict))
 
         for thread in thread_list:
-            thread.setDaemon(True)
+            thread.daemon = True
             thread.start()
 
         for thread in thread_list:

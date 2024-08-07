@@ -12,6 +12,7 @@
 """
 __author__ = 'JHao'
 
+import importlib
 import sys
 
 PY2 = sys.version_info[0] == 2
@@ -30,7 +31,7 @@ else:
     from urlparse import urlparse
 
 if PY3:
-    from imp import reload as reload_six
+    reload_six = importlib.reload
 else:
     reload_six = reload
 
